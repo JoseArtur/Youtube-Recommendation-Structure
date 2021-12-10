@@ -5,68 +5,62 @@ DROP TABLE IF EXISTS Utilizador;
  DROP TABLE IF EXISTS Tag;
  DROP TABLE IF EXISTS TipoConteudo;
  DROP TABLE IF EXISTS Visualizacao;
-
+PRAGMA foreign_keys = ON;
 CREATE TABLE Utilizador (  
-    iD INTEGER  NOT NULL PRIMARY KEY
+        ID INTEGER  PRIMARY KEY,
         email VARCHAR(255) NOT NULL ,     
         nome CHAR(30) NOT NULL,
         dataNasc DATE NOT NULL,
-        idade INTEGER CHECK (idade = CURRENT_DATE - dataNasc),
+        nacionalidade CHAR(30) NOT NULL,
         morada VARCHAR(255),
-        nacionalidade CHAR(30),
-        genero CHAR(1) DEFAULT('?'),
+        genero CHAR(1) DEFAULT('?')
  );
 
-CREATE TABLE Canal
- (    idCanal INTEGER PRIMARY KEY,
+CREATE TABLE Canal(    
+idCanal INTEGER PRIMARY KEY,
       nome CHAR(30) UNIQUE,
-      dataCriacao DATE,
-      numeroSubscritores INTEGER,
+      dataCriacao DATE NOT NULL,
+      numeroSubscritores INTEGER CHECK(NumeroSubscritores>=0),
       idioma CHAR(30),
-      Video INTEGER REFERENCES Video ON UPDATE CASCADE ON DELETE CASCADE
+      Video INTEGER REFERENCES Video
 );
 CREATE TABLE Comentario(
     ID INTEGER PRIMARY KEY,
-    Comentario VARCHAR(255),
-    dataComentario  DATE CHECK (DATE<=CURRENT_DATE),
+    Comentario VARCHAR(255) NOT NULL,
+    dataComentario  DATE,
     Video INTEGER REFERENCES Video ON UPDATE CASCADE ON DELETE CASCADE,
     Utilizador INTEGER REFERENCES Utilizador ON UPDATE CASCADE ON DELETE CASCADE,
+    Comentario1 VARCHAR(255) REFERENCES Comentario,
     UNIQUE( Video, Comentario, Utilizador)
-)
+);
 CREATE TABLE Video(
-    titulo CHAR(30),
+ID INTEGER PRIMARY KEY,
+    titulo CHAR(30) NOT NULL,
     descricao VARCHAR(255),
-    dataPublicacao DATE,
-    numeroGostos INTEGER,
+    dataPublicacaoDATE,
+    numeroGostos INTEGER CHECK(numeroVisualizacoes>=NumeroGostos),
     numeroComentarios INTEGER,
     numeroVisualizacoes INTEGER,
-    duracao TIME, //duvida
-    TipoConteudo CHAR(30) REFERENCES TIpoConteudo(tipo)
-
+    duracao TIME, 
+    TipoConteudo CHAR(30) REFERENCES TipoConteudo(tipo)
 );
 CREATE TABLE Tag(
-    nome CHAR(30),
-)
-CREATE TABLE TIpoConteudo(
-    tipo CHAR(30) NOT NULL DEFAUTL ('NONE')
-    Video INTEGER REFERENCES Video ON UPDATE CASCADE ON DELETE CASCADE,
-
+    ID INTEGER PRIMARY KEY,
+    nome CHAR(30) 
 );
-
+CREATE TABLE TipoConteudo(
+    tipo CHAR(30) NOT NULL DEFAULT ('NONE')
+);
 CREATE TABLE Visualizacao(
     ID  INTEGER PRIMARY KEY,
-    dataVisualizacao  DATE CHECK(dataVisualizacao<=CURRENT_DATE),
-    HoraInicio TIME NOT NULL,
-    HoraFim TIME NOT NULL,
+    dataVisualizacao  DATE ,
     Duracao TIME,  
-    origem = CHAR(30),
-    CHECK(HoraInicio < HoraFim),
-    CHECK(Duracao = HoraInicio - HoraFim)
-)
+    origem  CHAR(30)
+);
 CREATE TABLE VisualizacaoVideo(
-    Visualizacao INTEGER NOT NULL PRIMARY KEY,
+    Visualizacao INTEGER  PRIMARY KEY,
     Video INTEGER NOT NULL REFERENCES Video ON UPDATE CASCADE ON DELETE CASCADE,
-    quantidade INTEGER NOT NULL CHECK(quantidade=>0),
+    quantidade INTEGER NOT NULL CHECK(quantidade>=0),
     FOREIGN KEY (Visualizacao) REFERENCES Visualizacao ON UPDATE CASCADE ON DELETE CASCADE
 );
 
