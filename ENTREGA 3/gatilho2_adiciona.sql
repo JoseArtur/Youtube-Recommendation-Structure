@@ -2,10 +2,10 @@
 CREATE TRIGGER impedir_visualizacao 
 BEFORE INSERT ON VISUALIZACAO
 FOR EACH ROW
-WHEN NOT EXISTS (
+WHEN  EXISTS (
     SELECT * FROM UTILIZADOR, VIDEO,VIDEOTAG
     WHERE UTILIZADOR.IDUTILIZADOR  = NEW.IDUTILIZADOR
-    AND  (cast ( strftime('%Y.%m%d', NEW.dataVisualizacao) - strftime('%Y.%m%d', Utilizador.dataNasc) as int) ) >= 18
+    AND  (cast ( strftime('%Y.%m%d', NEW.dataVisualizacao) - strftime('%Y.%m%d', Utilizador.dataNasc) as int) ) < 18
     AND  VIDEO.IDVIDEO = NEW.IDVIDEO
     AND NEW.IDVIDEO = VIDEOTAG.IDVIDEO
     AND VIDEOTAG.NOME = '#+18'
