@@ -1,3 +1,6 @@
+.mode columns
+.headers on
+.nullvalue NULL
 --5. tipo mais recomendaado
 
 SELECT best_tipo

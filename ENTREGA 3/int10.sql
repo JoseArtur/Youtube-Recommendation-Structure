@@ -1,3 +1,6 @@
+.mode columns
+.headers on
+.nullvalue NULL
 --10. video com mais comentarios sem o max
 SELECT DISTINCT 
     CASE WHEN TAB1 < TAB2 THEN TAB1 ELSE TAB2 END AS most_commented_video

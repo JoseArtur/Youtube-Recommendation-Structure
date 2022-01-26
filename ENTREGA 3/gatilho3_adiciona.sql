@@ -1,8 +1,8 @@
-CREATE TRIGGER numeroSubscritores
-AFTER INSERT ON Subscreve
+--adiciona
+CREATE TRIGGER remover_recomendacao
+AFTER INSERT ON DENUNCIA
 FOR EACH ROW
 BEGIN
-    UPDATE Canal
-    SET numeroSubscritores = (Canal.numeroSubscritores +  1)
-    WHERE Canal.idCanal = New.idCanal;
+DELETE FROM RECOMENDADO 
+WHERE recomendado.IDVIDEO=NEW.IDVIDEO;
 END;

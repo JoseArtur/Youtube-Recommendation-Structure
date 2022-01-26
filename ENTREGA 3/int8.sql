@@ -1,3 +1,6 @@
+.mode columns
+.headers on
+.nullvalue NULL
  --o canal com mais videos recomendados de acordo com a faixa etária dos visualizadores - 
  WITH 
 GroupAge AS

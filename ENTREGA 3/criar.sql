@@ -33,7 +33,6 @@ CREATE TABLE Canal(
       dataCriacao DATE NOT NULL,
       idioma TEXT,
       idUtilizador INTEGER NOT NULL,
-      numeroSubscritores INTEGER DEFAULT(0),
        CONSTRAINT CanalPK PRIMARY KEY (idCanal),
        CONSTRAINT CanalUtilizadorFK FOREIGN KEY (idUtilizador)  REFERENCES Utilizador(idUtilizador) ON UPDATE CASCADE ON DELETE CASCADE
 );

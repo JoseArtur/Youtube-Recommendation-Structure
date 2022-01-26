@@ -57,11 +57,11 @@ INSERT INTO Utilizador  VALUES
 
 --Canal
 INSERT INTO Canal  (idCanal,nome,dataCriacao,idioma,idUtilizador)VALUES 
-  (1, '	El Reino Infantil', '2006-08-21', 'CN', 1),
+  (1, '	El Reino Infantil', '2006-08-21', 'BR', 1),
  (2, '	Ryans World', '2008-10-02', 'RU', 2),
  (3, '	Movieclips', '2006-01-13', 'HU', 3),
  (4, '	Vlad and Niki', '2009-04-19', 'ID', 4),
- (5, '	Vlad i', '2010-10-04', 'NG', 5),
+ (5, '	Vlad ', '2010-10-04', 'NG', 5),
  (6, 'Like Nastya', '2006-11-24', 'NG', 6),
  (7, 'WWE', '2018-07-27', 'JP', 7),
  (8, '	Kids Diana show', '2008-05-01', 'BR', 8),
@@ -93,11 +93,15 @@ INSERT INTO Video VALUES
  (4, 'Daily Routine', 'This is everything I do in a day', '2017-01-05', '00:25:21.7', 4, 3),
  (5, 'HALLOWEEN 2018', 'Nao se assuste', '2018-11-02', '00:10:40.6', 5, 4),
  (6, 'Quem faz o melhor origami', 'Foi dificil mas ficaram bem', '2012-05-10', '00:19:43.5', 6, 1),
- (7, 'Movie-Trailer', 'Filme ja disponivel em cinema', '2015-10-24', '00:01:32.7', 7, 1),
+ (7, 'Movie-Trailer', 'Filme ja disponivel em cinema', '2015-10-24', '00:02:32.7', 7, 1),
  (8, 'How to tie a tie', 'Nao foi muito dificil pois nao?', '2013-09-17', '00:03:26.8',8, 3),
  (9, 'Best movies 2020', 'Here is a list of my favourite movies this year', '2020-12-10', '00:32:35.9',  9, 4),
  (10, 'How to bake a cake', 'Ingredients: eggs, flour, sugar, chocolate', '2010-05-06',  '00:25:58.2',  10, 1),
-  (11, 'A vida so tristeza', 'Poucas ideias', '2015-05-06',  '00:05:58.2',  6, 4);
+  (11, 'A vida so tristeza', 'Poucas ideias', '2015-05-06',  '00:05:58.2',  6, 4),
+  (12, 'Reagindo a Justin Bieber', 'Poucas ideias', '2020-12-12',  '00:08:00.0',  1, 2),
+  (13, 'React ao novo presidente', 'Poucas ideias', '2021-01-06',  '00:15:00.0',  1, 3),
+(14, 'Melhores gols do Cristiano Ronaldo', 'Poucas ideias', '2021-02-02',  '00:06:35.5',  1, 4);
+
 
 --Visualizacao
 INSERT INTO Visualizacao VALUES
@@ -114,10 +118,10 @@ INSERT INTO Visualizacao VALUES
  (5, 11, '2021-11-13', '00:07:32', 'recomendacao', 40),
  (4, 12, '2021-08-07', '00:08:41', 'pesquisa', 17),
  (3, 13, '2020-09-10', '00:03:28', 'recomendacao', 18),
- (7, 14, '2019-08-09', '00:23:47', 'pesquisa', 2),
+ (7, 14, '2019-08-09', '00:01:47', 'pesquisa', 2),
  (5, 15, '2018-11-13', '00:03:44', 'pesquisa', 20),
  (10, 16, '2018-04-24', '00:16:28', 'pesquisa', 48),
- (1, 17, '2017-03-12', '00:05:28', 'recomendacao', 3),
+ (2, 17, '2021-03-12', '00:05:28', 'recomendacao', 3),
  (3, 18, '2011-12-22', '00:28:30', 'recomendacao', 21),
  (3, 19, '2016-03-30', '00:03:10', 'pesquisa', 43),
  (1, 20, '2017-12-08', '00:06:25', 'recomendacao', 32),
@@ -128,7 +132,10 @@ INSERT INTO Visualizacao VALUES
  (2, 25, '2019-01-30', '00:07:40', 'pesquisa', 13),
   (2, 26, '2021-01-01', '00:04:20', 'recomendacao', 17),
 (1, 27, '2021-01-01', '00:05:20', 'recomendacao', 1),
-(9, 28, '2021-01-01', '00:05:20', 'recomendacao', 21);
+(9, 29, '2021-01-01', '00:05:20', 'recomendacao', 21),
+(12, 30, '2022-01-01', '00:03:20', 'recomendacao', 40),
+(13, 31, '2022-01-06', '00:04:56', 'recomendacao', 45),
+(14, 32, '2022-01-07', '00:06:20', 'recomendacao', 13);
 
 
 
@@ -170,13 +177,25 @@ INSERT INTO Tag (nome) VALUES
 ('#+18');
 --Recomendado
 INSERT INTO Recomendado VALUES
- (30, 2),
- (3, 4),
- (42, 10),
- (24, 7),
- (1, 3),
- (40, 8),
- (28, 5);
+(16,3),
+(16,4),
+(16,2),
+(1,2),
+(3,1),
+(40,5),
+(18,3),
+(3,2),
+(21,3),
+(32,1),
+(14,5),
+(48,10),
+(23,8),
+(17,2),
+(1,1),
+(21,9),
+(40,12),
+(45,13),
+(13,14);
 
 --Curte
 INSERT INTO Curte  VALUES

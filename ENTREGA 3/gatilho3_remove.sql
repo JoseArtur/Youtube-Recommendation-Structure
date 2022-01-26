@@ -1,1 +1,1 @@
-DROP TRIGGER IF EXISTS numeroSubscritores;
+DROP TRIGGER IF EXISTS remover_recomendacao;
