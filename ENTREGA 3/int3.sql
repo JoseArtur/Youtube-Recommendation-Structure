@@ -5,7 +5,7 @@
 select X.idCanal , Canal.nome
 from Canal,(select idCanal, count(distinct idTC) as cnt 
       from (select Video.idCanal, video.IDTC 
-            from Video, Canal where canal.idCanal = video.idCanal and video.idVideo in
+            from Video, Canal where canal.idCanal = video.idCanal and Video.idTC <> 'NONE' and video.idVideo in
                                                     (select distinct Recomendado.idVideo 
                                                      from Recomendado,Visualizacao 
                                                      where recomendado.idVideo = Visualizacao.idVideo)) 
